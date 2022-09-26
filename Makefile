@@ -12,6 +12,7 @@ help:
 	@echo 'make git_setproxy'
 	@echo 'make git_unsetproxy'
 
+# ------------------------------------------------
 install_git:
 	sudo apt update
 	sudo apt install git
@@ -25,7 +26,7 @@ install_basi:
 	sudo apt install emacs net-tools
 
 
-# ------------------------------------------------
+# ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
 ## https://aquarius-train.hatenablog.com/entry/Samba%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86%E3%81%A8Windows%E3%81%8B%E3%82%89%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%96%B9%E6%B3%95
 ##
@@ -43,12 +44,12 @@ samba_enable:
 	sudo systemctl enable smbd
 	sudo systemctl enable nmbd
 
-# ---------------------------------------------
+# --------------------------------------------- My dotfiles
 get_dotfiles:
 	(cd ~; git clone https://github.com/hiraieject/.dotfiles.git)
 	(cd ~/.dotfiles; ./link.sh)
 
-# ---------------------------------------------
+# --------------------------------------------- My folders
 get_this:
 	(cd ..; apt clone https://github.com/hiraieject/linuxenv.git)
 
@@ -59,7 +60,7 @@ get_tgtdev:
 get_pcdev:
 	(cd ~; git clone https://github.com/hiraieject/pcdev.git)
 
-# ---------------------------------------------
+# --------------------------------------------- git
 git_config:
 	git config --global user.email "you@example.com"
 	git config --global user.name "account name"
@@ -73,3 +74,18 @@ git_setproxy:
 git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
+
+# --------------------------------------------- LXC
+## https://www.kkaneko.jp/tools/container/lxc.html
+## https://ubuntu.com/server/docs/containers-lxc
+## https://linuxcontainers.org/ja/lxc/introduction/#LXC
+
+
+
+lxc_install:
+	sudo apt update
+	sudo apt -y install debootstrap lxc lxctl lxc-templates curl
+##	lxc-checkconfig
+
+lxc_templates:
+	ls -l /usr/share/lxc/templates
