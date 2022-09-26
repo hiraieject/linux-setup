@@ -1,6 +1,16 @@
 
 help:
-
+	@echo 'make install_emacs'
+	@echo 'make install_git'
+	@echo 'make install_dev'
+	@echo 'make get_dotfiles'
+	@echo 'make get_this'
+	@echo 'make get_memos'
+	@echo 'make get_tgtdev'
+	@echo 'make get_pcdev'
+	@echo 'make git_config'
+	@echo 'make git_setproxy'
+	@echo 'make git_unsetproxy'
 
 install_git:
 	sudo apt update
