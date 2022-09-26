@@ -2,10 +2,6 @@
 help:
 
 
-install_emacs:
-	sudo apt update
-	sudo apt install emacs
-
 install_git:
 	sudo apt update
 	sudo apt install git
@@ -13,6 +9,29 @@ install_git:
 install_dev:
 	sudo apt update
 	sudo apt install build-essential
+
+install_basi:
+	sudo apt update
+	sudo apt install emacs net-tools
+
+
+# ------------------------------------------------
+## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
+## https://aquarius-train.hatenablog.com/entry/Samba%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86%E3%81%A8Windows%E3%81%8B%E3%82%89%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%96%B9%E6%B3%95
+##
+samba_install:
+	sudo -E apt update
+	sudo -E apt install samba
+samba_adduser:
+	sudo pdbedit -a hirai
+samba_editconf:
+	sudo vi /etc/samba/smb.conf
+samba_restart:
+	sudo service smbd restart
+	sudo service nmbd restart:
+samba_enable:
+	sudo systemctl enable smbd
+	sudo systemctl enable nmbd
 
 # ---------------------------------------------
 get_dotfiles:
