@@ -39,7 +39,7 @@ samba_editconf:
 	sudo vi /etc/samba/smb.conf
 samba_restart:
 	sudo service smbd restart
-	sudo service nmbd restart:
+	sudo service nmbd restart
 samba_enable:
 	sudo systemctl enable smbd
 	sudo systemctl enable nmbd
