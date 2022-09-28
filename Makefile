@@ -21,9 +21,9 @@ install_dev:
 	sudo apt update
 	sudo apt install build-essential
 
-install_basi:
+install_basic:
 	sudo apt update
-	sudo apt install emacs net-tools
+	sudo apt install emacs net-tools global
 
 
 # ------------------------------------------------ samba
@@ -75,12 +75,23 @@ git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
 
+# --------------------------------------------- mozc
+install_mozc:
+	sudo apt update
+	sudo apt install emacs-mozc-bin
+	(mkdir -p ~/lisp; cd ~/lisp; \
+	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+
+# google jpanese input
+# (setq default-input-method "japanese-mozc")
+# (require 'mozc)
+
 # --------------------------------------------- LXC
 ## https://www.kkaneko.jp/tools/container/lxc.html
 ## https://ubuntu.com/server/docs/containers-lxc
 ## https://linuxcontainers.org/ja/lxc/introduction/#LXC
 
-
+LXCCON=test1
 
 lxc_install:
 	sudo apt update
@@ -89,3 +100,18 @@ lxc_install:
 
 lxc_templates:
 	ls -l /usr/share/lxc/templates
+lxc_list:
+	sudo lxc-ls 
+
+lxc_create:
+	sudo lxc-create -t /usr/share/lxc/templates/lxc-ubuntu -n $(LXCCON)
+lxc_destroy:
+	sudo lxc-destroy -n $(LXCCON)
+lxc_start:
+	sudo lxc-start -n $(LXCCON)
+lxc_stop:
+	sudo lxc-stop -n $(LXCCON)
+lxc_attach:
+	sudo lxc-attach -n $(LXCCON)
+lxc_editconf:
+	sudo vi /var/lib/lxc/test1/config
