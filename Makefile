@@ -79,8 +79,8 @@ git_unsetproxy:
 install_mozc:
 	sudo apt update
 	sudo apt install emacs-mozc-bin
-	(mkdir -p ~/lisp; cd ~/lisp; \
-	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+#	(mkdir -p ~/.emacs.d/lisp; cd ~/.emacs.d/lisp; \
+#	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
 
 # google jpanese input
 # (setq default-input-method "japanese-mozc")
