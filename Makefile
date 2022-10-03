@@ -85,6 +85,10 @@ config_git_setproxy:
 	git config --global http.proxy http://10.77.8.70:8080
 	git config --global https.proxy http://10.77.8.70:8080
 
+config_git_setproxy86:
+	git config --global http.proxy http://192.168.0.86:8080
+	git config --global https.proxy http://192.168.0.86:8080
+
 config_git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
