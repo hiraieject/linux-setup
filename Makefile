@@ -39,6 +39,10 @@ install_basic:
 	sudo apt update
 	sudo apt install emacs net-tools global
 
+install_xterm:
+	sudo apt update
+	sudo apt install xterm
+
 
 # ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
