@@ -18,6 +18,7 @@ install_dev:
 get_dotfiles:
 	(cd ~; git clone https://github.com/hiraieject/.dotfiles.git)
 	(cd ~/.dotfiles; ./link.sh)
+	source ~/.bashrc
 
 # ---------------------------------------------
 get_this:
