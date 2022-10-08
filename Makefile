@@ -43,6 +43,10 @@ install_xterm:
 	sudo apt update
 	sudo apt install xterm
 
+install_opencvdev:
+	sudo apt update
+	sudo apt install libopencv-dev
+
 
 # ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
@@ -76,6 +80,8 @@ clone_tgtdev:
 	(cd ~; git clone https://github.com/hiraieject/tgtdev.git)
 clone_pcdev:
 	(cd ~; git clone https://github.com/hiraieject/pcdev.git)
+clone_pavctdev:
+	(cd ~; git clone https://github.com/hiraieject/pavctdev.git)
 
 # --------------------------------------------- git
 config_git:
@@ -97,6 +103,22 @@ config_git_setproxy86:
 config_git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
+
+
+config_git2:
+	rm ~/.gitconfig
+	git config --global user.email "hirai.yoshikazu@persol-avct.co.jp"
+	git config --global user.name "hirai.yoshikazu"
+	cp ~/.gitconfig ~/.gitconfig.pavctgitlab
+
+	rm ~/.gitconfig
+	git config --global user.email "you@example.com"
+	git config --global user.name "account name"
+	git config --global credential.helper store
+##	git config --global user.useConfigOnly "true"
+
+	git config --global includeIf."gitdir:nuvoton2210".path ".gitconfig.pavctgitlab"
+
 
 # --------------------------------------------- mozc
 install_mozc:
