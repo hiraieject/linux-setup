@@ -104,6 +104,15 @@ config_git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
 
+##  "server certificate verification failed. CAfile: /home/<user>/.ssl/trusted.pem CRLfile: none" エラー対策
+config_git_sslvrify:
+	git config --global http.sslverify false
+
+##  "fatal: unable to access 'https://XXXXX': server certificate verification failed. CAfile: none CRLfile: none" エラー対策
+config_git_fix_certerr:
+	sudo apt update
+	sudo apt install --reinstall ca-certificates
+
 
 config_git2:
 	rm ~/.gitconfig
@@ -119,7 +128,6 @@ config_git2:
 
 	git config --global includeIf."gitdir:nuvoton2210".path ".gitconfig.pavctgitlab"
 
-
 # --------------------------------------------- mozc
 install_mozc:
 	sudo apt update
@@ -130,6 +138,15 @@ install_mozc:
 # google jpanese input
 # (setq default-input-method "japanese-mozc")
 # (require 'mozc)
+
+# --------------------------------------------- doxygen
+install_doxygen:
+	sudo apt update
+	sudo apt install doxygen graphviz
+	sudo apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+uninstall_doxygen:
+	sudo apt remove doxygen graphviz
+	sudo apt remove texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
 # --------------------------------------------- LXC
 ## https://www.kkaneko.jp/tools/container/lxc.html
