@@ -88,6 +88,7 @@ config_git:
 	git config --global user.email "you@example.com"
 	git config --global user.name "account name"
 	git config --global credential.helper store
+	git config pull.rebase false
 	@echo 'https://YOUR_ACCOUNT:YOUR_TOKEN@github.com' > ~/.git-credentials
 	@chmod og-rwx ~/.git-credentials
 	@echo Please edit ~/.git-credentials,  ~/.gitconfig
