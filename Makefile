@@ -26,6 +26,13 @@ help:
 	@echo 'make git_setproxy'
 	@echo 'make git_unsetproxy'
 
+gcommit:
+	git commit .
+gpush:
+	git push
+gpull:
+	git pull
+
 # ------------------------------------------------
 install_git:
 	sudo apt update
@@ -139,6 +146,21 @@ install_mozc:
 # google jpanese input
 # (setq default-input-method "japanese-mozc")
 # (require 'mozc)
+
+# --------------------------------------------- cmake
+install_cmake:
+	sudo apt update
+	sudo apt install cmake
+
+# --------------------------------------------- googletest
+install_googletest:
+	sudo apt update
+	sudo apt install googletest
+	dpkg -L googletest
+	if [ ! -f /usr/bin/cmake ] ; then \
+		make install_cmake; \
+	fi
+	(cd /usr/src/googletest; sudo cmake .; sudo make; sudo make install)
 
 # --------------------------------------------- doxygen
 install_doxygen:
