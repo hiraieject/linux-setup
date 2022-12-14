@@ -50,10 +50,19 @@ install_xterm:
 	sudo apt update
 	sudo apt install xterm
 
+# --------------------------------------------- OpenCV
 install_opencvdev:
 	sudo apt update
 	sudo apt install libopencv-dev
 
+# --------------------------------------------- googletest
+install_googletest:
+	sudo apt update
+	sudo apt install libgoogle-glog-dev
+##	dpkg -L libgoogle-glog-dev
+
+	sudo apt install libgtest-dev
+##	dpkg -L libgtest-dev
 
 # ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
@@ -151,22 +160,6 @@ install_mozc:
 install_cmake:
 	sudo apt update
 	sudo apt install cmake
-
-# --------------------------------------------- googletest
-install_googletest:
-	sudo apt update
-	sudo apt install libgoogle-glog-dev
-##	dpkg -L libgoogle-glog-dev
-
-	sudo apt install libgtest-dev
-##	dpkg -L libgtest-dev
-
-#	sudo apt install googletest
-#	dpkg -L googletest
-#	if [ ! -f /usr/bin/cmake ] ; then \
-#		make install_cmake; \
-#	fi
-#	(cd /usr/src/googletest; sudo cmake .; sudo make; sudo make install)
 
 # --------------------------------------------- doxygen
 install_doxygen:
