@@ -155,12 +155,18 @@ install_cmake:
 # --------------------------------------------- googletest
 install_googletest:
 	sudo apt update
-	sudo apt install googletest
-	dpkg -L googletest
-	if [ ! -f /usr/bin/cmake ] ; then \
-		make install_cmake; \
-	fi
-	(cd /usr/src/googletest; sudo cmake .; sudo make; sudo make install)
+	sudo apt install libgoogle-glog-dev
+##	dpkg -L libgoogle-glog-dev
+
+	sudo apt install libgtest-dev
+##	dpkg -L libgtest-dev
+
+#	sudo apt install googletest
+#	dpkg -L googletest
+#	if [ ! -f /usr/bin/cmake ] ; then \
+#		make install_cmake; \
+#	fi
+#	(cd /usr/src/googletest; sudo cmake .; sudo make; sudo make install)
 
 # --------------------------------------------- doxygen
 install_doxygen:
