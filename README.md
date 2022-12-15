@@ -21,11 +21,13 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 ### ・git インストール（必須）
 
 > sudo apt update
+
 > sudo apt install git make
 
 ### ・gitのプロクシ設定（プロクシが必要な環境のみ）
 
 > git config --global http.proxy http://192.168.0.86:8080
+
 > git config --global https.proxy http://192.168.0.86:8080
 
 ### ・linuxenv(このフォルダ)を取得
