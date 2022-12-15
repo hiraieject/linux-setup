@@ -27,6 +27,7 @@ help:
 	@echo 'make git_unsetproxy'
 
 gcommit:
+	git pull
 	git commit . -m "update"
 	git push
 gpush:
