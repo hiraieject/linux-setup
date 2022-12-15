@@ -67,8 +67,9 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 
 proxyの設定・設定消去、makeで設定後emacsでアドレス変更<br>
 > make config_git_setproxy<br>
-> make config_git_unsetproxy<br>
 > emacs ~/.gitconfig
+
+> make config_git_unsetproxy<br>
 
 ### ・sambaの設定
 
