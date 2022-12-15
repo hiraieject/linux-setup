@@ -52,6 +52,15 @@ hostname:
 	fi
 
 # ------------------------------------------------ first install
+install_ubuntu_basic:
+	make install_dev
+	make install_basic
+	make install_xterm
+	make install_mozc
+	make install_cmake
+	make install_doxygen
+	make install_samba
+
 install_git:
 	sudo apt update
 	sudo apt install git

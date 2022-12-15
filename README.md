@@ -40,6 +40,9 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 ### ・sudoでパスワードを要求しない
 > make sudo_nopass
 
+### ・基本ツールの一気インストール
+> make install_ubuntu_basic
+
 ### ・個人設定ファイルのインストール(bash,emacsなどの設定)
 > make install_dotfiles
 
@@ -67,3 +70,11 @@ proxyの設定・設定消去、makeで設定後emacsでアドレス変更<br>
 > make config_git_unsetproxy<br>
 > emacs ~/.gitconfig
 
+### ・sambaの設定
+
+> make edit_samba_conf
+
+以下を書き換えて行を有効にする<br>
+> [homes]<br>
+>   browseable = yes<br>
+>   read only = no
