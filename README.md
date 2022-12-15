@@ -1,5 +1,5 @@
 
-# linux 個人的環境設定(主にvmware上のubuntu仮想マシンで検証)
+# linux 個人的環境設定<br>(主にvmware上のubuntu仮想マシン用)
 
 ## ■■■ インストール直後の設定(rootでGUIログインして作業)
 ### ・IPアドレス、ホストネームをGUIで設定する

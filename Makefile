@@ -62,6 +62,9 @@ install_ubuntu_basic:
 	make install_doxygen
 	make install_samba
 
+install_vmwaretools:
+	sudo apt install open-vm-tools
+
 install_git:
 	sudo apt update
 	sudo apt install git
