@@ -61,3 +61,9 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 
 個人アクセストークンの新規作成は以下を参照<br>
 https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+proxyの設定<br>
+> make config_git_setproxy<br>
+
+proxyの設定消去<br>
+> make config_git_unsetproxy
