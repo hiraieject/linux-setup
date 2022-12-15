@@ -47,6 +47,17 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 > vi ~/.dotfiles/.bashrc_local
 
 作業後、ログインし直す<br>
-rootユーザーで同じ作業をしても良い
+必要ならrootユーザーで同じ作業をしても良い
 
+### ・gitの詳細設定
 
+> make config_git
+
+設定ファイルを手動で変更（user.emailとuser.name）
+> emacs ~/.gitconfig
+
+認証情報を変更（accoutと個人アクセストークン）
+> emacs ~/.git-credentials
+
+個人アクセストークンの新規作成は以下を参照<br>
+https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
