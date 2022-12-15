@@ -74,7 +74,7 @@ proxyの設定・設定消去、makeで設定後emacsでアドレス変更<br>
 
 > make edit_samba_conf
 
-以下を書き換えて行を有効にする<br>
+以下を書き換え、セミコロンを消して行を有効にする<br>
 > [homes]<br>
 >   browseable = yes<br>
 >   read only = no
