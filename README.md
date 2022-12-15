@@ -46,6 +46,7 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 ~/.dotfiles/.bashrc_local を編集
 > vi ~/.dotfiles/.bashrc_local
 
-作業後、ログインし直す
+作業後、ログインし直す<br>
+rootユーザーで同じ作業をしても良い
 
 
