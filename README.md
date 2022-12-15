@@ -78,3 +78,6 @@ proxyの設定・設定消去、makeで設定後emacsでアドレス変更<br>
 > [homes]<br>
 >   browseable = yes<br>
 >   read only = no
+
+参考<br>
+> https://aquarius-train.hatenablog.com/entry/Samba%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86%E3%81%A8Windows%E3%81%8B%E3%82%89%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%96%B9%E6%B3%95
