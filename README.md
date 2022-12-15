@@ -1,5 +1,5 @@
 
-# linux 個人的環境設定(主にubuntuで検証)
+# linux 個人的環境設定(主にvmware上のubuntu仮想マシンで検証)
 
 ## ■■■ インストール直後の設定(rootでGUIログインして作業)
 ### ・IPアドレス、ホストネームをGUIで設定する
@@ -87,3 +87,11 @@ sambaサーバーを再起動して、設定を反映
 
 参考
 > https://aquarius-train.hatenablog.com/entry/Samba%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%89%8B%E9%A0%86%E3%81%A8Windows%E3%81%8B%E3%82%89%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%96%B9%E6%B3%95
+
+### ・vscode のインストール
+
+以下から deb 64bit版をダウンロード
+>https://code.visualstudio.com/download
+
+コマンドラインからインストール
+> sudo apt install ./code_1.62.3-1637137107_amd64.deb
