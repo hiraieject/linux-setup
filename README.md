@@ -5,10 +5,10 @@
 
 ### ・aptのプロクシ設定（プロクシが必要な環境のみ）
 
-sudo vi /etc/apt/apt.conf.d/01proxy
-------------- 以下を追加
+> sudo vi /etc/apt/apt.conf.d/01proxy
+
+以下を追加<br>
 Acquire::http::Proxy "http"//192.168.0.86:8080/";
--------------
 
 ### ・git インストール（必須）
 
