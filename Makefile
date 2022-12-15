@@ -33,7 +33,24 @@ gpush:
 gpull:
 	git pull
 
-# ------------------------------------------------
+# ------------------------------------------------ sudo nopassword
+sudo_nopass:
+	echo  > /tmp/add_sudoers
+	echo `whoami` "ALL=NOPASSWD: ALL" >> /tmp/add_sudoers
+	sudo make _sudo_nopass
+_sudo_nopass:
+	cat /tmp/add_sudoers >> /etc/sudoers
+
+# ------------------------------------------------ hostname
+hostname:
+	@if [ AA${NAME} = 'AA' ] ; then \
+		echo 'Please enter as below'; \
+		echo '  make NAME=<hosrname> hostname'; \
+	else \
+		sudo hostnamectl set-hostname ${NAME}; \
+	fi
+
+# ------------------------------------------------ first install
 install_git:
 	sudo apt update
 	sudo apt install git
@@ -59,10 +76,10 @@ install_opencvdev:
 install_googletest:
 	sudo apt update
 	sudo apt install libgoogle-glog-dev
-##	dpkg -L libgoogle-glog-dev
+	dpkg -L libgoogle-glog-dev
 
 	sudo apt install libgtest-dev
-##	dpkg -L libgtest-dev
+	dpkg -L libgtest-dev
 
 # ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
@@ -81,14 +98,14 @@ restart_samba:
 	sudo service nmbd restart
 
 # --------------------------------------------- My dotfiles
-clone_dotfiles:
+install_dotfiles:
 	(cd ~; git clone https://github.com/hiraieject/.dotfiles.git)
 	(cd ~/.dotfiles; ./link.sh)
 	source ~/.bashrc
 
 # --------------------------------------------- My folders
 clone_linuxenv:
-	(cd ..; apt clone https://github.com/hiraieject/linuxenv.git)
+	(cd ~; git clone https://github.com/hiraieject/linuxenv.git)
 
 clone_memos:
 	(cd ~; git clone https://github.com/hiraieject/memos.git)
