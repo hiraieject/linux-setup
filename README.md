@@ -20,8 +20,8 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 
 ### ・git インストール（必須）
 
-> > sudo apt update<br>
-> > sudo apt install git make
+> sudo apt update<br>
+> sudo apt install git make
 
 ### ・gitのプロクシ設定（プロクシが必要な環境のみ）
 
