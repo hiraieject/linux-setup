@@ -37,7 +37,13 @@ Acquire::http::Proxy "http"//192.168.0.86:8080/";
 > cd ~/linuxenv
 > make なんとか
 
-### ・sudoでパスワードを溶融しない設定
+### ・sudoでパスワードを要求しない
 > make sudo_nopass
+
+### ・個人設定ファイルのインストール(bash,emacsなどの設定)
+> make install_dotfiles
+~/.dotfiles/.bashrc_local を編集
+> vi ~/.dotfiles/.bashrc_local
+作業後、ログインし直す
 
 
