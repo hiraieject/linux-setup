@@ -13,7 +13,8 @@
 を実行してメニューを表示、Generic 105-Key PC (intl.) を選択、左右でカーソル移動して了解を押す
 
 ### ・CapsLockをCtrlに変える
-仮想マシンでは不要？
+仮想マシンでは不要？<br>
+https://linux.just4fun.biz/?Ubuntu/Caps-Lock%E3%82%AD%E3%83%BC%E3%82%92Ctrl%E3%82%AD%E3%83%BC%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 
 ### ・IPアドレス、ホストネームをGUIで設定する
 ### ・プロクシの設定が必要な場合のみ、GUIで設定する
