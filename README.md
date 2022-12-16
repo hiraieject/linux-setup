@@ -9,9 +9,11 @@
 日本語(Mozc)はそのまま<br>
 ＋アイコンを押して、英語(US)を追加、一番上に置く
 #### Console
-sudo dpkg-reconfigure keyboard-configuration<br>
-から、Generic 105-Key PC (intl.) を選択、左右でカーソル移動して了解を押す
+> sudo dpkg-reconfigure keyboard-configuration<br>
+を実行してメニューを表示、Generic 105-Key PC (intl.) を選択、左右でカーソル移動して了解を押す
+
 ### ・CapsLockをCtrlに変える
+仮想マシンでは不要？
 
 ### ・IPアドレス、ホストネームをGUIで設定する
 ### ・プロクシの設定が必要な場合のみ、GUIで設定する
