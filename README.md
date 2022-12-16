@@ -19,7 +19,7 @@ https://linux.just4fun.biz/?Ubuntu/Caps-Lock%E3%82%AD%E3%83%BC%E3%82%92Ctrl%E3%8
 ### ・IPアドレス、ホストネームをGUIで設定する
 ### ・プロクシの設定が必要な場合のみ、GUIで設定する
 ### ・通常使用するユーザーの追加
-> adduser &ltusername&gt
+> adduser &lt;username&gt;
 ### ・追加したユーザーをwheelグループに登録する
 > vi /etc/group
 
