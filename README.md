@@ -16,7 +16,7 @@
 仮想マシンでは不要？<br>
 https://linux.just4fun.biz/?Ubuntu/Caps-Lock%E3%82%AD%E3%83%BC%E3%82%92Ctrl%E3%82%AD%E3%83%BC%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 
-### ・IPアドレス、ホストネームをGUIで設定する
+### ・IPアドレス、ホストネームをGUIで設定、シェル変数の設定は以下の個人環境設定で導入
 ### ・プロクシの設定が必要な場合のみ、GUIで設定する
 ### ・通常使用するユーザーの追加
 > adduser &lt;username&gt;
