@@ -201,6 +201,22 @@ uninstall_doxygen:
 	sudo apt remove doxygen graphviz
 	sudo apt remove texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
+
+# --------------------------------------------- arm gcc toolcain (nuvoton/M53,M7)
+ARMGCCBASE=gcc-arm-none-eabi-10.3-2021.10
+ARMGCCURL="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/$(ARMGCCBASE)-x86_64-linux.tar.bz2"
+install_armgcc:
+	if [ ! -d ${HOME}/local/$(ARMGCCBASE) ] ; then \
+		mkdir -p ${HOME}/local; \
+		(cd ${HOME}/local; \
+		 wget --no-check-certificate $(ARMGCCURL); \
+		 tar xvf $(ARMGCCBASE)-x86_64-linux.tar.bz2; rm $(ARMGCCBASE)-x86_64-linux.tar.bz2; \
+		 ln -s $(ARMGCCBASE) gcc-arm-none-eabi); \
+	fi
+	@echo ------------------------------
+	${HOME}/local/$(ARMGCCBASE)/bin/arm-none-eabi-gcc --version
+
+
 # --------------------------------------------- LXC
 ## https://www.kkaneko.jp/tools/container/lxc.html
 ## https://ubuntu.com/server/docs/containers-lxc
