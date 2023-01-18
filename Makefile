@@ -217,6 +217,27 @@ install_armgcc:
 	${HOME}/local/$(ARMGCCBASE)/bin/arm-none-eabi-gcc --version
 
 
+# --------------------------------------------- NFS Server
+install_nfs:
+	sudo apt update
+	sudo apt -y install nfs-kernel-server
+#	sudo vi /etc/idmapd.conf
+#  6行目：コメント解除して自ドメイン名に変更
+#Domain = srv.world
+	sudo vi /etc/exports
+#  最終行にマウント設定を記述
+#  例として [/ZZhome/nfsshare] を NFS 共有に設定
+#/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
+
+#root@dlp:~# mkdir /home/nfsshare
+restart_nfs:
+	sudo systemctl restart nfs-serve
+
+mount_nfs:
+	sudo mount -t nfs 192.168.0.12:/home/hirai /mnt
+
+## ifconfig eth0 192.168.0.100 netmask 255.255.255.0 broadcast 192.168.0.255
+
 # --------------------------------------------- LXC
 ## https://www.kkaneko.jp/tools/container/lxc.html
 ## https://ubuntu.com/server/docs/containers-lxc
