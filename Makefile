@@ -28,7 +28,9 @@ help:
 
 gcommit:
 	git pull
-	git commit . -m "update"
+	git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt
+	(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
+	git commit . -m "update linuxenv"
 	git push
 gpush:
 	git push
