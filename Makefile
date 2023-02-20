@@ -26,16 +26,20 @@ help:
 	@echo 'make git_setproxy'
 	@echo 'make git_unsetproxy'
 
+# ------------------------------------------------ git
+-include ~/.dotfiles/.makefile.inc
 gcommit:
-	git pull
-	git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt
-	(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
-	git commit . -m "update linuxenv"
-	git push
+	@make __TGTFOLDER="." _gcommit_noedit
 gpush:
-	git push
+	@make __TGTFOLDER="." _gpush
 gpull:
-	git pull
+	@make __TGTFOLDER="." _gpull
+gdiff:
+	@make __TGTFOLDER="." _gdiff
+gdiff_commit:
+	@make __TGTFOLDER="." _gdiff_commit
+gstatus:
+	@make __TGTFOLDER="." _gstatus
 
 # ------------------------------------------------ sudo nopassword
 sudo_nopass:
