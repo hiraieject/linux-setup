@@ -63,6 +63,7 @@ install_ubuntu_basic:
 	make install_cmake
 	make install_doxygen
 	make install_samba
+	make update_certfile
 
 install_vmwaretools:
 	sudo apt install open-vm-tools
@@ -157,6 +158,10 @@ config_git_unsetproxy:
 ##  "server certificate verification failed. CAfile: /home/<user>/.ssl/trusted.pem CRLfile: none" エラー対策
 config_git_sslvrify:
 	git config --global http.sslverify false
+
+update_certfile:
+	sudo apt install apt-transport-https ca-certificates
+	sudo update-ca-certificates
 
 ##  "fatal: unable to access 'https://XXXXX': server certificate verification failed. CAfile: none CRLfile: none" エラー対策
 config_git_fix_certerr:
