@@ -187,17 +187,30 @@ config_git2:
 
 	git config --global includeIf."gitdir:nuvoton2210".path ".gitconfig.pavctgitlab"
 
-# --------------------------------------------- mozc
-install_mozc:
+# --------------------------------------------- emacs28
+install_emacs28:
+#リポジトリ追加
+	sudo add-apt-repository ppa:kelleyk/emacs
 	sudo apt update
-	sudo apt install emacs-mozc-bin
-#	(mkdir -p ~/.emacs.d/lisp; cd ~/.emacs.d/lisp; \
-#	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+# 以前のものを削除
+###	sudo dpkg remove force-remove-reinstreq emacs
+	sudo apt autoremove emacs emacs-common
+	sudo apt remove emacs26-common emacs26 emacs-common emacs apel flim w3m-el emacs-el emacs-bin-common
+# インストール
+	sudo apt install emacs28
 
-# google jpanese input
-# (setq default-input-method "japanese-mozc")
-# (require 'mozc)
-
+# --------------------------------------------- mozc
+## -> straight に移行
+## install_mozc:
+## 	sudo apt update
+## 	sudo apt install emacs-mozc-bin
+## #	(mkdir -p ~/.emacs.d/lisp; cd ~/.emacs.d/lisp; \
+## #	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+## 
+## # google jpanese input
+## # (setq default-input-method "japanese-mozc")
+## # (require 'mozc)
+## 
 # --------------------------------------------- cmake
 install_cmake:
 	sudo apt update
