@@ -189,6 +189,9 @@ config_git2:
 
 # --------------------------------------------- emacs28
 install_emacs28:
+# install add-apt-repository command
+	sudo apt update
+	sudo apt install software-properties-common
 #リポジトリ追加
 	sudo add-apt-repository ppa:kelleyk/emacs
 	sudo apt update
