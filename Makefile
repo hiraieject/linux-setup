@@ -30,6 +30,7 @@ help:
 install_git:
 	sudo apt update
 	sudo apt install git
+	sudo apt install --reinstall ca-certificates
 
 install_dev:
 	sudo apt update
