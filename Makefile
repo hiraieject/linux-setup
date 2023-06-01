@@ -26,7 +26,52 @@ help:
 	@echo 'make git_setproxy'
 	@echo 'make git_unsetproxy'
 
-# ------------------------------------------------
+# ------------------------------------------------ git
+-include ~/.dotfiles/.makefile.inc
+gcommit:
+	@make __TGTFOLDER="." _gcommit_noedit
+gpush:
+	@make __TGTFOLDER="." _gpush
+gpull:
+	@make __TGTFOLDER="." _gpull
+gdiff:
+	@make __TGTFOLDER="." _gdiff
+gdiff_commit:
+	@make __TGTFOLDER="." _gdiff_commit
+gstatus:
+	@make __TGTFOLDER="." _gstatus
+
+# ------------------------------------------------ sudo nopassword
+sudo_nopass:
+	echo  > /tmp/add_sudoers
+	echo `whoami` "ALL=NOPASSWD: ALL" >> /tmp/add_sudoers
+	sudo make _sudo_nopass
+_sudo_nopass:
+	cat /tmp/add_sudoers >> /etc/sudoers
+
+# ------------------------------------------------ hostname
+hostname:
+	@if [ AA${NAME} = 'AA' ] ; then \
+		echo 'Please enter as below'; \
+		echo '  make NAME=<hosrname> hostname'; \
+	else \
+		sudo hostnamectl set-hostname ${NAME}; \
+	fi
+
+# ------------------------------------------------ first install
+install_ubuntu_basic:
+	make install_dev
+	make install_basic
+	make install_xterm
+	make install_mozc
+	make install_cmake
+	make install_doxygen
+	make install_samba
+	make update_certfile
+
+install_vmwaretools:
+	sudo apt install open-vm-tools
+
 install_git:
 	sudo apt update
 	sudo apt install git
@@ -44,6 +89,19 @@ install_xterm:
 	sudo apt update
 	sudo apt install xterm
 
+# --------------------------------------------- OpenCV
+install_opencvdev:
+	sudo apt update
+	sudo apt install libopencv-dev
+
+# --------------------------------------------- googletest
+install_googletest:
+	sudo apt update
+	sudo apt install libgoogle-glog-dev
+	dpkg -L libgoogle-glog-dev
+
+	sudo apt install libgtest-dev
+	dpkg -L libgtest-dev
 
 # ------------------------------------------------ samba
 ## Sambaサーバーの設定手順(Ubuntu18.04)とWindowsからのアクセス方法
@@ -62,14 +120,14 @@ restart_samba:
 	sudo service nmbd restart
 
 # --------------------------------------------- My dotfiles
-clone_dotfiles:
+install_dotfiles:
 	(cd ~; git clone https://github.com/hiraieject/.dotfiles.git)
 	(cd ~/.dotfiles; ./link.sh)
 	source ~/.bashrc
 
 # --------------------------------------------- My folders
 clone_linuxenv:
-	(cd ..; apt clone https://github.com/hiraieject/linuxenv.git)
+	(cd ~; git clone https://github.com/hiraieject/linuxenv.git)
 
 clone_memos:
 	(cd ~; git clone https://github.com/hiraieject/memos.git)
@@ -77,12 +135,15 @@ clone_tgtdev:
 	(cd ~; git clone https://github.com/hiraieject/tgtdev.git)
 clone_pcdev:
 	(cd ~; git clone https://github.com/hiraieject/pcdev.git)
+clone_pavctdev:
+	(cd ~; git clone https://github.com/hiraieject/pavctdev.git)
 
 # --------------------------------------------- git
 config_git:
 	git config --global user.email "you@example.com"
 	git config --global user.name "account name"
 	git config --global credential.helper store
+	git config pull.rebase false
 	@echo 'https://YOUR_ACCOUNT:YOUR_TOKEN@github.com' > ~/.git-credentials
 	@chmod og-rwx ~/.git-credentials
 	@echo Please edit ~/.git-credentials,  ~/.gitconfig
@@ -99,16 +160,111 @@ config_git_unsetproxy:
 	git config --global --unset http.proxy
 	git config --global --unset https.proxy
 
-# --------------------------------------------- mozc
-install_mozc:
-	sudo apt update
-	sudo apt install emacs-mozc-bin
-#	(mkdir -p ~/.emacs.d/lisp; cd ~/.emacs.d/lisp; \
-#	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+##  "server certificate verification failed. CAfile: /home/<user>/.ssl/trusted.pem CRLfile: none" エラー対策
+config_git_sslvrify:
+	git config --global http.sslverify false
 
-# google jpanese input
-# (setq default-input-method "japanese-mozc")
-# (require 'mozc)
+update_certfile:
+	sudo apt install apt-transport-https ca-certificates
+	sudo update-ca-certificates
+
+##  "fatal: unable to access 'https://XXXXX': server certificate verification failed. CAfile: none CRLfile: none" エラー対策
+config_git_fix_certerr:
+	sudo apt update
+	sudo apt install --reinstall ca-certificates
+
+
+config_git2:
+	rm ~/.gitconfig
+	git config --global user.email "hirai.yoshikazu@persol-avct.co.jp"
+	git config --global user.name "hirai.yoshikazu"
+	cp ~/.gitconfig ~/.gitconfig.pavctgitlab
+
+	rm ~/.gitconfig
+	git config --global user.email "you@example.com"
+	git config --global user.name "account name"
+	git config --global credential.helper store
+##	git config --global user.useConfigOnly "true"
+
+	git config --global includeIf."gitdir:nuvoton2210".path ".gitconfig.pavctgitlab"
+
+# --------------------------------------------- emacs28
+install_emacs28:
+# install add-apt-repository command
+	sudo apt update
+	sudo apt install software-properties-common
+#リポジトリ追加
+	sudo add-apt-repository ppa:kelleyk/emacs
+	sudo apt update
+# 以前のものを削除
+###	sudo dpkg remove force-remove-reinstreq emacs
+	sudo apt autoremove emacs emacs-common
+	sudo apt remove emacs26-common emacs26 emacs-common emacs apel flim w3m-el emacs-el emacs-bin-common
+# インストール
+	sudo apt install emacs28
+
+# --------------------------------------------- mozc
+## -> straight に移行
+## install_mozc:
+## 	sudo apt update
+## 	sudo apt install emacs-mozc-bin
+## #	(mkdir -p ~/.emacs.d/lisp; cd ~/.emacs.d/lisp; \
+## #	 wget https://raw.githubusercontent.com/google/mozc/master/src/unix/emacs/mozc.el)
+## 
+## # google jpanese input
+## # (setq default-input-method "japanese-mozc")
+## # (require 'mozc)
+## 
+# --------------------------------------------- cmake
+install_cmake:
+	sudo apt update
+	sudo apt install cmake
+
+# --------------------------------------------- doxygen
+install_doxygen:
+	sudo apt update
+	sudo apt install doxygen graphviz
+	sudo apt install texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+uninstall_doxygen:
+	sudo apt remove doxygen graphviz
+	sudo apt remove texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+
+
+# --------------------------------------------- arm gcc toolcain (nuvoton/M53,M7)
+ARMGCCBASE=gcc-arm-none-eabi-10.3-2021.10
+ARMGCCURL="https://developer.arm.com/-/media/Files/downloads/gnu-rm/10.3-2021.10/$(ARMGCCBASE)-x86_64-linux.tar.bz2"
+install_armgcc:
+	if [ ! -d ${HOME}/local/$(ARMGCCBASE) ] ; then \
+		mkdir -p ${HOME}/local; \
+		(cd ${HOME}/local; \
+		 wget --no-check-certificate $(ARMGCCURL); \
+		 tar xvf $(ARMGCCBASE)-x86_64-linux.tar.bz2; rm $(ARMGCCBASE)-x86_64-linux.tar.bz2; \
+		 ln -s $(ARMGCCBASE) gcc-arm-none-eabi); \
+	fi
+	@echo ------------------------------
+	${HOME}/local/$(ARMGCCBASE)/bin/arm-none-eabi-gcc --version
+
+
+# --------------------------------------------- NFS Server
+install_nfs:
+	sudo apt update
+	sudo apt -y install nfs-kernel-server
+#	sudo vi /etc/idmapd.conf
+#  6行目：コメント解除して自ドメイン名に変更
+#Domain = srv.world
+	sudo vi /etc/exports
+#  最終行にマウント設定を記述
+#  例として [/ZZhome/nfsshare] を NFS 共有に設定
+#/home/nfsshare 10.0.0.0/24(rw,no_root_squash)
+
+#root@dlp:~# mkdir /home/nfsshare
+restart_nfs:
+	sudo systemctl restart nfs-serve
+
+mount_nfs:
+	sudo mount -t nfs 192.168.0.12:/home/hirai /mnt
+
+## ifconfig eth0 192.168.0.100 netmask 255.255.255.0 broadcast 192.168.0.255
 
 # --------------------------------------------- LXC
 ## https://www.kkaneko.jp/tools/container/lxc.html
