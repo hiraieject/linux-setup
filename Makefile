@@ -27,8 +27,6 @@ help:
 	@echo 'make git_unsetproxy'
 
 # ------------------------------------------------ git
-GITURL        = https://github.com/hiraieject/
-DIFFFOLDER    = ~/diff-en-develop
 -include ~/.dotfiles/.makefile.gitbase.inc
 
 # ------------------------------------------------ sudo nopassword
