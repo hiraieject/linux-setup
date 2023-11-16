@@ -233,6 +233,38 @@ install_armgcc:
 	${HOME}/local/$(ARMGCCBASE)/bin/arm-none-eabi-gcc --version
 
 
+# --------------------------------------------- SSH Server
+install_ssh_server:
+	sudo apt -y update
+	sudo apt -y install openssh-server
+
+restart_ssh_server:
+	sudo service ssh restart
+
+enable_password_login_ssh:
+	sudo sed -i 's/#   PasswordAuthentication/   PasswordAuthentication/g' /etc/ssh/ssh_config
+	sudo sed -i 's/PasswordAuthentication no/   PasswordAuthentication yes/g' /etc/ssh/ssh_config
+	grep PasswordAuthentication /etc/ssh/ssh_config
+	sudo systemctl restart ssh
+
+disable_password_login_ssh:
+	sudo sed -i 's/#   PasswordAuthentication/   PasswordAuthentication/g' /etc/ssh/ssh_config
+	sudo sed -i 's/PasswordAuthentication yes/   PasswordAuthentication no/g' /etc/ssh/ssh_config
+	grep PasswordAuthentication /etc/ssh/ssh_config
+	sudo systemctl restart ssh
+
+port_20022_ssh:
+	sudo sed -i 's/#   Port 22/#   Port 22/g' /etc/ssh/ssh_config
+	sudo sed -i 's/Port 22/Port 20022/g' /etc/ssh/ssh_config
+	grep PasswordAuthentication /etc/ssh/ssh_config
+	sudo systemctl restart ssh
+
+port_22_ssh:
+	sudo sed -i 's/#   Port 22/#   Port 22/g' /etc/ssh/ssh_config
+	sudo sed -i 's/Port 20022/Port 22/g' /etc/ssh/ssh_config
+	grep PasswordAuthentication /etc/ssh/ssh_config
+	sudo systemctl restart ssh
+
 # --------------------------------------------- NFS Server
 install_nfs:
 	sudo apt update
