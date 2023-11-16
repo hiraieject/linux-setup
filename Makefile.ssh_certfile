@@ -26,24 +26,24 @@ restart_server:
 
 setting_enable_password_login:
 	sudo sed -i 's/#   PasswordAuthentication/   PasswordAuthentication/g' /etc/ssh/ssh_config
-	sudo sed -i 's/PasswordAuthentication no/   PasswordAuthentication yes/g' /etc/ssh/ssh_config
+	sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/ssh_config
 	grep PasswordAuthentication /etc/ssh/ssh_config
 	sudo systemctl restart ssh
 
 setting_disable_password_login:
 	sudo sed -i 's/#   PasswordAuthentication/   PasswordAuthentication/g' /etc/ssh/ssh_config
-	sudo sed -i 's/PasswordAuthentication yes/   PasswordAuthentication no/g' /etc/ssh/ssh_config
+	sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/ssh_config
 	grep PasswordAuthentication /etc/ssh/ssh_config
 	sudo systemctl restart ssh
 
 setting_port_20022:
-	sudo sed -i 's/#   Port 22/#   Port 22/g' /etc/ssh/ssh_config
+	sudo sed -i 's/#   Port/#   Port/g' /etc/ssh/ssh_config
 	sudo sed -i 's/Port 22/Port 20022/g' /etc/ssh/ssh_config
 	grep PasswordAuthentication /etc/ssh/ssh_config
 	sudo systemctl restart ssh
 
 setting_port_22:
-	sudo sed -i 's/#   Port 22/#   Port 22/g' /etc/ssh/ssh_config
+	sudo sed -i 's/#   Port/#   Port/g' /etc/ssh/ssh_config
 	sudo sed -i 's/Port 20022/Port 22/g' /etc/ssh/ssh_config
 	grep PasswordAuthentication /etc/ssh/ssh_config
 	sudo systemctl restart ssh
