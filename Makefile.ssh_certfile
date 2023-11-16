@@ -16,6 +16,15 @@ endif
 privatekey_install_onserver:
 	cat ~/tmp_id_rsa.pub >> ~/.ssh/authorized_keys
 
+print_ssh_config:
+	@USER=$$USER; \
+	IP=$$(hostname -I | awk '{print $$1}'); \
+	HOST=$$(hostname); \
+	echo "Host $$HOST"; \
+	echo "    HostName $$IP"; \
+	echo "    User $$USER"
+
+
 # --------------------------------------------- SSH Server
 install_server:
 	sudo apt -y update
