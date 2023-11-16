@@ -1,8 +1,8 @@
 
 # --------------------------------------------- SSH Client
 privatekey_generate:
-	clientpc $ ssh-keygen
-	clientpc $ ls -l ~/.ssh/id_rsa*
+	ssh-keygen
+	ls -l ~/.ssh/id_rsa*
 
 privatekey_copytoserver:
 ifdef SERVER
